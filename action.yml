@@ -1,0 +1,31 @@
+name: 'PR Intent Checker'
+description: 'Checks if PR code changes align with the linked issue intent using an LLM.'
+author: 'Cline (AI Assistant)'
+
+inputs:
+  github_token:
+    description: 'GitHub token for API access'
+    required: true
+  azure_openai_endpoint:
+    description: 'Azure OpenAI Endpoint URL'
+    required: true
+  azure_openai_key:
+    description: 'Azure OpenAI API Key'
+    required: true
+  azure_openai_deployment:
+    description: 'Azure OpenAI Deployment Name for the model'
+    required: true
+
+outputs:
+  result:
+    description: 'The PASS/FAIL result from the LLM evaluation.'
+  explanation:
+    description: 'The explanation provided by the LLM for the result.'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'check-circle'
+  color: 'green'
